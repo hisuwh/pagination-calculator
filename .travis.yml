@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- '8'
+script:
+- npm run review
+- npm run build
+deploy:
+  provider: npm
+  email: henry@ing-simmons.co.uk
+  api_key:
+    secure: Zh7YkwpNk6/U2c39Y0iHKgigkOu1qHJ57FmJScGEKoCEiIu7umlfbOtztfUxzwclxJISH7wqLVAjtOfUybTMbaqystPab8R3vE2umrt8SgccnVNzVElxyXSXuR/gnbTVhnSx0cP1A9B0e18HKeIlucLb7CZtfLepgGYlezhRIfrgcnQ/2LwIjgAT/5bp1wMt22vjHP70MMn1VpZek2tsr11DMRiUd3hqM0TtErYSpiOCokQGumC9bS3/iCCVvQl/0vD136Mv0bxj5ccyfpgn0ITilP//qq/fBv0WdG8FCatZSQJfSEGB10HBF+HbCW2K6kb0T52duvqaStdXxXGXNjKmKs+W1uoLuGATPrUO/7BXwZb1K1l+NuYo2AvPdBaMexyMsQJk64cvL5N949Xc1vY1zi4qR7dc0QRySpnYnOIsZdB6vL9e9Y/bkTJW0BGz4GlHS5Ic0NU98z/A5hFheKiZlfQslHAL4vGRoIams+T7421mmSGf7hQFroxhOHr+VBvJmNHbUqR7SqgbkyEmMvKpZTQVXkDkKNg50i4QRrGCAA2MiiT8XZCyfK8x8Vv4Vr4/3TAHJTm96am6INiH7CXUkWqEP4pxBuUgJfyPn0YtavpgHYr+aR3KA23aAQHPL2Ve9we1YssyxTTs+FQXk2HHvE6JfY1Qz88J6T349vY=
+  on:
+    tags: true
+    repo: hisuwh/pagination-calculator
+  skip_cleanup: true
