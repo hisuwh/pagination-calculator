@@ -18,7 +18,7 @@ export interface PageInformation {
     showingEnd: number;
 }
 
-export const pageCalculator = (options: PageCalculatorOptions): PageInformation => {
+export const paginationCalculator = (options: PageCalculatorOptions): PageInformation => {
     const { total, pageLimit } = options;
     const current = options.current || 1;
     const pageSize = options.pageSize || 10;
