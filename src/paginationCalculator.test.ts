@@ -1,5 +1,5 @@
 import { AsyncTest, Expect, Test, TestCase, TestFixture, SpyOn } from "alsatian";
-import { pageCalculator, PageCalculatorOptions, PageInformation } from "./pageCalculator";
+import { paginationCalculator, PageCalculatorOptions, PageInformation } from "./paginationCalculator";
 
 @TestFixture("pageCalculator")
 export class PageCalculatorTests {
@@ -7,7 +7,7 @@ export class PageCalculatorTests {
     @Test("should return list of all pages when total less than limit")
     public WhenPagesLessThanLimit() {
 
-        const result = pageCalculator({
+        const result = paginationCalculator({
             total: 100,
             pageSize: 10,
             pageLimit: 10
@@ -28,7 +28,7 @@ export class PageCalculatorTests {
     @Test("should return limit -3 pages and last two pages when pages greater than limit and current is less than half")
     public WhenPagesGreaterThanLimitAndCurrentLessThanHalf() {
 
-        const result = pageCalculator({
+        const result = paginationCalculator({
             total: 120,
             pageSize: 10,
             pageLimit: 10,
@@ -49,7 +49,7 @@ export class PageCalculatorTests {
 
     @Test("should return first 2 pages and 6th page to end when pages greater than limit and current less than half limit away from end")
     public WhenPagesGreaterThanLimitAndCurrentLessThanHalfFromEnd() {
-        const result = pageCalculator({
+        const result = paginationCalculator({
             total: 120,
             pageSize: 10,
             pageLimit: 10,
@@ -70,7 +70,7 @@ export class PageCalculatorTests {
 
     @Test("should return first page, 5 pages around current and last two pages when large number of pages and in the first half")
     public WhenLargeNumberOfPagesAndInTheFirstHalf() {
-        const result = pageCalculator({
+        const result = paginationCalculator({
             total: 200,
             pageSize: 10,
             pageLimit: 10,
@@ -91,7 +91,7 @@ export class PageCalculatorTests {
 
     @Test("should return first two pages, 5 pages around current and last page when large number of pages and in the second half")
     public WhenLargeNumberOfPagesAndInTheSecondHalf() {
-        const result = pageCalculator({
+        const result = paginationCalculator({
             total: 200,
             pageSize: 10,
             pageLimit: 10,
@@ -272,7 +272,7 @@ export class PageCalculatorTests {
         }
     )
     public ShouldHandleOtherVariations(options: PageCalculatorOptions, expectedResult: PageInformation) {
-        const result = pageCalculator(options);
+        const result = paginationCalculator(options);
         Expect(result).toEqual(expectedResult);
     }
 }
