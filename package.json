@@ -1,7 +1,7 @@
 {
     "name": "pagination-calculator",
     "version": "1.0.0",
-    "description": "Utility to calculation pages for pagination",
+    "description": "Utility for calculating pages for pagination",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
