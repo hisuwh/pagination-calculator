@@ -14,6 +14,10 @@
 ```ts
 import { paginationCalculator } from "pagination-calculator";
 
+const options = {
+    // see below
+};
+
 const result = paginationCalculator(options);
 ```
 
