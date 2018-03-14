@@ -26,8 +26,8 @@ const result = paginationCalculator(options);
 interface PageCalculatorOptions {
     total: number;                // total number of items
     current?: number;             // current page
-    pageSize?: number;            // number of items per page
-    pageLimit?: number;           // number of pages in array
+    pageSize?: number;            // number of items per page - default 10
+    pageLimit?: number;           // number of pages in array - default no limit
 }
 ```
 
