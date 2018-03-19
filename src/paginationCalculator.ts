@@ -51,6 +51,7 @@ export const paginationCalculator = (options: PageCalculatorOptions): PageInform
 const getPages = (pageCount: number, pageLimit: number, current: number): Pages => {
     const pages: Pages = [];
 
+    // add all pages
     if (pageLimit === undefined || pageCount <= pageLimit) {
         addPageRange(pages, 1, pageCount);
         return pages;
@@ -58,6 +59,7 @@ const getPages = (pageCount: number, pageLimit: number, current: number): Pages 
 
     const threshold = Math.ceil(pageLimit / 2);
 
+    // we're near the start so add the first lot and the last few e.g. 1234..78
     if ((current - 1) <= threshold) {
         addPageRange(pages, 1, pageLimit - 3);
         addEllipsis(pages);
@@ -65,6 +67,7 @@ const getPages = (pageCount: number, pageLimit: number, current: number): Pages 
         return pages;
     }
 
+    // we're near the end so add the first few and the last lot e.g. 12..5678
     if (current + 1 > (pageCount - threshold)) {
         addPageRange(pages, 1, 2);
         addEllipsis(pages);
@@ -78,13 +81,6 @@ const getPages = (pageCount: number, pageLimit: number, current: number): Pages 
         addPageRange(pages, current - 2, current + 2);
         addEllipsis(pages);
         addPageRange(pages, getEndMin(current, pageCount, pageLimit), pageCount);
-        return pages;
-    }
-
-    if (current > (pageCount - threshold)) {
-        addPageRange(pages, 1, 2);
-        addEllipsis(pages);
-        addPageRange(pages, pageCount - (threshold + 1), pageCount);
         return pages;
     }
 
@@ -110,7 +106,7 @@ const getStartMax = (current: number, pageCount: number, pageLimit: number) => {
 const getEndMin = (current: number, pageCount: number, pageLimit: number) => {
     const min = (pageLimit - 7) / 2;
 
-    return pageCount + 1 - (current > pageCount / 2
+    return pageCount + 1 - (current >= pageCount / 2
         ? Math.floor(min)
         : Math.ceil(min));
 };

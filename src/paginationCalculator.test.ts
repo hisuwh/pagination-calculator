@@ -271,6 +271,24 @@ export class PageCalculatorTests {
             showingEnd: 8
         }
     )
+    @TestCase(
+        {
+            total: 260,
+            pageSize: 10,
+            pageLimit: 10,
+            current: 13
+        },
+        {
+            total: 260,
+            current: 13,
+            pageCount: 26,
+            pages: [1, 2, "...", 11, 12, 13, 14, 15, "...", 26],
+            next: 14,
+            previous: 12,
+            showingStart: 121,
+            showingEnd: 130
+        }
+    )
     public ShouldHandleOtherVariations(options: PageCalculatorOptions, expectedResult: PageInformation) {
         const result = paginationCalculator(options);
         Expect(result).toEqual(expectedResult);
